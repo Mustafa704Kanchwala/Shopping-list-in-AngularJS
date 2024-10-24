@@ -6,17 +6,18 @@
    <script>
     let app = angular.module("myApp",[]);
     app.controller("shopping_list",function($scope){
-        $scope.items = ["Milk","Butter","Tea"];
+        $scope.items = [];
         $scope.add_item = function(){
             $scope.items.push($scope.new_item);
-        }
+        };
     });
    </script>
 </head>
 <body>
     <div ng-controller="shopping_list">
+        <h2>My Shopping list</h2>
         <ul>
-            <li ng-repeat="item in items"> {{item}} </li>
+            <li ng-repeat="item in items"> {{item}} &times;</li>
         </ul>
 
         <input ng-model="new_item">
