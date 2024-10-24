@@ -10,6 +10,9 @@
         $scope.add_item = function(){
             $scope.items.push($scope.new_item);
         };
+        $scope.rmv_item = function(index){
+            $scope.items.splice(index , 1);
+        }
     });
    </script>
 </head>
@@ -17,7 +20,7 @@
     <div ng-controller="shopping_list">
         <h2>My Shopping list</h2>
         <ul>
-            <li ng-repeat="item in items"> {{item}} &times;</li>
+            <li ng-repeat="item in items"> {{item}} <span ng-click="rmv_item($index)">&times;</span></li>
         </ul>
 
         <input ng-model="new_item">
