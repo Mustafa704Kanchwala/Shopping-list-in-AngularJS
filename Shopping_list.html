@@ -8,7 +8,13 @@
     app.controller("shopping_list",function($scope){
         $scope.items = [];
         $scope.add_item = function(){
-            $scope.items.push($scope.new_item);
+            $scope.error_text="";     
+             if($scope.items.indexOf($scope.new_item) == -1){
+                $scope.items.push($scope.new_item);
+             }   
+            else{
+                $scope.error_text="!!This item is already exist in list"
+            }   
         };
         $scope.rmv_item = function(index){
             $scope.items.splice(index , 1);
@@ -24,7 +30,8 @@
         </ul>
 
         <input ng-model="new_item">
-         <button ng-click="add_item()">Add</button>
+         <button ng-click="add_item()">Add</button><br>
+         {{error_text}}
     </div>
     
 </body>
