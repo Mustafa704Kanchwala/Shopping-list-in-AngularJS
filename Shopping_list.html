@@ -3,12 +3,15 @@
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
    <title>Shopping list </title>
+   <link rel="stylesheet" href="styles.css">
+   
    <script>
     let app = angular.module("myApp",[]);
     app.controller("shopping_list",function($scope){
         $scope.items = [];
         $scope.add_item = function(){
-            $scope.error_text="";     
+            $scope.error_text="";   
+             if(!$scope.new_item){return;}  
              if($scope.items.indexOf($scope.new_item) == -1){
                 $scope.items.push($scope.new_item);
              }   
@@ -23,15 +26,15 @@
    </script>
 </head>
 <body>
-    <div ng-controller="shopping_list">
-        <h2>My Shopping list</h2>
+    <div class="container" ng-controller="shopping_list">
+        <h2 class="h2">My Shopping list</h2>
         <ul>
-            <li ng-repeat="item in items"> {{item}} <span ng-click="rmv_item($index)">&times;</span></li>
+            <li class="shopping-item" ng-repeat="item in items"> {{item}} <span class="remove-icon" ng-click="rmv_item($index)">&times;</span></li>
         </ul>
 
-        <input ng-model="new_item">
-         <button ng-click="add_item()">Add</button><br>
-         {{error_text}}
+        <input class="input-field" ng-model="new_item">
+         <button class="button" ng-click="add_item()">Add</button><br>
+         <p class="error-message">{{error_text}}</p>
     </div>
     
 </body>
