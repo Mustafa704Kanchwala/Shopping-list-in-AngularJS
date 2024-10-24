@@ -7,6 +7,9 @@
     let app = angular.module("myApp",[]);
     app.controller("shopping_list",function($scope){
         $scope.items = ["Milk","Butter","Tea"];
+        $scope.add_item = function(){
+            $scope.items.push($scope.new_item);
+        }
     });
    </script>
 </head>
@@ -17,6 +20,7 @@
         </ul>
 
         <input ng-model="new_item">
+         <button ng-click="add_item()">Add</button>
     </div>
     
 </body>
